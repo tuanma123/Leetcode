@@ -12,6 +12,7 @@ Completed problems
 ## Medium
 * https://leetcode.com/problems/map-sum-pairs/description/
 * https://leetcode.com/problems/sort-characters-by-frequency/description/
+* https://leetcode.com/problems/replace-words/description/
 
 ## Hard
 * 
