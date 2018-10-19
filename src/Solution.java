@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 class Solution {
 
@@ -73,5 +70,101 @@ class Solution {
         }
 
         return newSentence.toString();
+    }
+
+    /**
+     * Medium
+     *
+     * Given an input string, reverse the string word by word.
+     * @param s
+     * @return
+     */
+    public String reverseWords(String s) {
+        int start = 0;
+        if (s.startsWith(" ")) {
+
+            for (int y = 0; y < s.length(); y++) {
+                if (s.charAt(y) != ' ') {
+                    break;
+                }
+                start++;
+            }
+         }
+        s = s.substring(start, s.length());
+
+        String[] tokens = s.split(" ");
+        StringBuilder sentence = new StringBuilder();
+
+        for (int x = tokens.length - 1; x >= 0; x--) {
+            if (x == 0) {
+                sentence.append(tokens[x]);
+            } else {
+                sentence.append(" " + tokens[x]);
+            }
+        }
+
+        return sentence.toString();
+    }
+
+    /**
+     * Given a string, find the length of the longest substring without repeating characters.
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring(String s) {
+        int maxLength = 0;
+
+        if (s.length() <= 1) {
+            return s.length();
+        }
+
+        for (int x = 0; x < s.length(); x++) {
+            Set<Character> seen = new HashSet<>();
+            seen.add(s.charAt(x));
+
+            int y = x + 1;
+            while (y < s.length() && !seen.contains(s.charAt(y))) {
+                seen.add(s.charAt(y));
+                y++;
+
+            }
+
+            if (seen.size() > maxLength) {
+                maxLength = seen.size();
+            }
+        }
+
+        return maxLength;
+    }
+
+    /**
+     * Merge k sorted linked lists and return it as one sorted list.
+     * @param lists
+     * @return
+     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<Integer> heap = new PriorityQueue(Collections.reverseOrder());
+        for (ListNode list : lists) {
+            while(list != null) {
+                heap.add(list.val);
+                list = list.next;
+            }
+        }
+
+        if (heap.size() > 0) {
+            ListNode sorted = new ListNode(heap.poll());
+
+            while (!heap.isEmpty()) {
+                ListNode newNode = new ListNode(heap.poll());
+
+                newNode.next = sorted;
+                sorted = newNode;
+
+            }
+
+            return sorted;
+        } else {
+            return null;
+        }
     }
 }
