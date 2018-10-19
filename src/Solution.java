@@ -186,4 +186,274 @@ class Solution {
 
         return range;
     }
+
+    /**
+     * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string
+     * is valid.
+     * @param s
+     * @return
+     */
+    public boolean isValid(String s) {
+        Map<Character, Character> parens = constructParenthesisMap();
+
+        Stack<Character> stack = new Stack<>();
+
+        for (Character c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.add(c);
+            } else if (c == ')' || c == '}' || c == ']') {
+                if (stack.isEmpty() || stack.peek() != parens.get(c)) {
+                    return false;
+                } else {
+                    stack.pop();
+                }
+            }
+        }
+
+        return stack.isEmpty();
+    }
+
+    public Map<Character, Character> constructParenthesisMap() {
+        Map<Character, Character> matchingParens = new HashMap<>();
+        matchingParens.put('}', '{');
+        matchingParens.put(')', '(');
+        matchingParens.put(']', '[');
+
+        return matchingParens;
+    }
+
+    /**
+     * Write an efficient algorithm that searches for a value in an m x n matrix.
+     * @param matrix
+     * @param target
+     * @return
+     */
+    public boolean searchMatrix(int[][] matrix, int target) {
+        for (int x = 0; x < matrix.length; x++) {
+            for (int y = 0; y < matrix[x].length; y++) {
+                if (matrix[x][y] == target) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right,
+     * level by level).
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> traversal = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
+
+        if (root != null) {
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                List<Integer> level = new ArrayList<>();
+
+                int origSize = queue.size();
+                for (int x = 0; x < origSize; x++) {
+                    TreeNode next = queue.poll();
+                    if (next.left != null) {
+                        queue.add(next.left);
+                    }
+
+                    if (next.right != null) {
+                        queue.add(next.right);
+                    }
+
+                    level.add(next.val);
+                }
+
+                traversal.add(level);
+            }
+        }
+
+        return traversal;
+    }
+
+    /**
+     * Given a binary tree, find the leftmost value in the last row of the tree.
+     * @param root
+     * @return
+     */
+    public int findBottomLeftValue(TreeNode root) {
+        List<List<Integer>> traversal = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
+
+        if (root != null) {
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                List<Integer> level = new ArrayList<>();
+
+                int origSize = queue.size();
+                for (int x = 0; x < origSize; x++) {
+                    TreeNode next = queue.poll();
+                    if (next.left != null) {
+                        queue.add(next.left);
+                    }
+
+                    if (next.right != null) {
+                        queue.add(next.right);
+                    }
+
+                    level.add(next.val);
+                }
+
+                traversal.add(level);
+            }
+        }
+
+        return traversal.get(traversal.size() -1).get(0);
+    }
+
+    /**
+     * You need to find the largest value in each row of a binary tree.
+     * @param root
+     * @return
+     */
+    public List<Integer> largestValues(TreeNode root) {
+        List<Integer> maxes = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
+        if (root != null) {
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                int max;
+                int origSize = queue.size();
+                max = queue.peek().val;
+
+                for (int x = 0; x < origSize; x++) {
+                    TreeNode next = queue.poll();
+                    if (next.left != null) {
+                        queue.add(next.left);
+                    }
+
+                    if (next.right != null) {
+                        queue.add(next.right);
+                    }
+
+                    if (next.val > max) {
+                        max = next.val;
+                    }
+                }
+
+                maxes.add(max);
+            }
+        }
+
+        return maxes;
+    }
+
+    /**
+     * Given a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+     * @param root
+     * @return
+     */
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> right = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
+
+        if (root != null) {
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                int origSize = queue.size();
+                for (int x = 0; x < origSize; x++) {
+                    TreeNode next = queue.poll();
+                    if (next.left != null) {
+                        queue.add(next.left);
+                    }
+
+                    if (next.right != null) {
+                        queue.add(next.right);
+                    }
+
+                    if (x == origSize - 1) {
+                        right.add(next.val);
+                    }
+                }
+            }
+
+            queue.clear();
+            queue.add(root);
+            List<List<Integer>> traversal = new ArrayList<>();
+
+        }
+
+        return right;
+    }
+
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+        List<Integer> distanceK = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList();
+
+
+        if (root != null) {
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                TreeNode next = queue.poll();
+
+                if (next.left != null) {
+                    if (next.left.val == target.val) {
+                        distanceK.add(next.right.val);
+                        root = next.left;
+                        break;
+                    }
+
+                    queue.add(next.left);
+                }
+
+                if (next.right != null) {
+                    if (next.right.val == target.val) {
+                        distanceK.add(next.left.val);
+                        root = next.right;
+                        break;
+                    }
+
+                    queue.add(next.right);
+                }
+            }
+
+            queue.clear();
+            List<List<Integer>> traversal = new ArrayList<>();
+
+
+            if (root != null) {
+                queue.add(root);
+                while (!queue.isEmpty()) {
+                    List<Integer> level = new ArrayList<>();
+
+                    int origSize = queue.size();
+                    for (int x = 0; x < origSize; x++) {
+                        TreeNode next = queue.poll();
+                        if (next.left != null) {
+                            queue.add(next.left);
+                        }
+
+                        if (next.right != null) {
+                            queue.add(next.right);
+                        }
+
+                        level.add(next.val);
+                    }
+
+                    traversal.add(level);
+                }
+
+                if (traversal.size() > K) {
+                    distanceK.addAll(traversal.get(K));
+                }
+            }
+
+        }
+
+        return distanceK;
+    }
 }

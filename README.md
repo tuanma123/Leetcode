@@ -13,3 +13,9 @@ problems.
 |Longest Substring Without Repeated Characters|Medium|https://leetcode.com/problems/longest-substring-without-repeating-characters/|
 |Merge K Lists| Hard| https://leetcode.com/problems/merge-k-sorted-lists/|
 |Find First and Last Position of Element in Sorted Array| Medium| https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/submissions/|
+|Valid Parenthesis| Easy|https://leetcode.com/problems/valid-parentheses/description/|
+|Search a 2d Matrix|Easy|https://leetcode.com/problems/search-a-2d-matrix/|
+|Binary Tree Level Order Traversal|Medium|https://leetcode.com/problems/binary-tree-level-order-traversal/description/|
+|Find Bottom Left Tree Value|Medium|https://leetcode.com/problems/find-bottom-left-tree-value/description/|
+|Find Largest Value in Each Tree Row|Medium|https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/|
+|Binary Tree Right Side View|Medium|https://leetcode.com/problems/binary-tree-right-side-view/description/|
