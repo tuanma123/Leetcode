@@ -167,4 +167,23 @@ class Solution {
             return null;
         }
     }
+
+    public int[] searchRange(int[] nums, int target) {
+        int[] range = {-1, -1};
+
+        for (int x = 0; x < nums.length; x++) {
+            if (nums[x] == target) {
+                range[0] = x;
+                while (x < nums.length && nums[x] == target) {
+                    x++;
+                }
+
+                range[1] = x;
+
+                return range;
+            }
+        }
+
+        return range;
+    }
 }

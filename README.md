@@ -12,3 +12,4 @@ problems.
 |Replace Words| Medium |https://leetcode.com/problems/replace-words/description/|
 |Longest Substring Without Repeated Characters|Medium|https://leetcode.com/problems/longest-substring-without-repeating-characters/|
 |Merge K Lists| Hard| https://leetcode.com/problems/merge-k-sorted-lists/|
+|Find First and Last Position of Element in Sorted Array| Medium| https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/submissions/|
