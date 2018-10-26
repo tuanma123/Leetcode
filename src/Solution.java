@@ -456,4 +456,33 @@ class Solution {
 
         return distanceK;
     }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> anagrams = new ArrayList<>();
+        Map<List<Character>, List<String>> anagramMap = new HashMap<>();
+
+        for (String str : strs) {
+            List<Character> chars = new ArrayList<>();
+            for (char c : str.toCharArray()) {
+                chars.add(c);
+            }
+
+            Collections.sort(chars);
+
+            if (anagramMap.containsKey(chars)) {
+                anagramMap.get(chars).add(str);
+            } else {
+                List<String> newGroup = new ArrayList<>();
+                newGroup.add(str);
+
+                anagramMap.put(chars, newGroup);
+            }
+        }
+
+        for (List<Character> anagram : anagramMap.keySet()) {
+            anagrams.add(anagramMap.get(anagram));
+        }
+
+        return anagrams;
+    }
 }
