@@ -20,3 +20,7 @@ problems.
 |Find Largest Value in Each Tree Row|Medium|https://leetcode.com/problems/find-largest-value-in-each-tree-row/description/|
 |Binary Tree Right Side View|Medium|https://leetcode.com/problems/binary-tree-right-side-view/description/|
 |Group Anagrams| Medium | https://leetcode.com/problems/group-anagrams/ |
+|Top K Frequent Elements| Medium | https://leetcode.com/problems/top-k-frequent-elements/ |
+|Kth Largest Element in an Array | Medium | https://leetcode.com/problems/kth-largest-element-in-an-array/ | 
+|Kth Smallest Element in a Sorted Matrix | Medium | https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/ |
+|Kth Smallest Element in a BST | Medium | https://leetcode.com/problems/kth-smallest-element-in-a-bst/ |

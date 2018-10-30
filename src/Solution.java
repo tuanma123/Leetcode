@@ -485,4 +485,88 @@ class Solution {
 
         return anagrams;
     }
+
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> counts = new HashMap<>();
+        List<Integer> top = new ArrayList<>();
+        PriorityQueue<Map.Entry> pq;
+
+        for (int n : nums) {
+            counts.put(n, counts.getOrDefault(n, 0) + 1);
+        }
+
+        pq = new PriorityQueue<>(new Comparator<Map.Entry>() {
+            public int compare(Map.Entry a, Map.Entry b) {
+                return (int) b.getValue() - (int) a.getValue();
+            }
+        });
+
+        pq.addAll(counts.entrySet());
+
+        for (int i = 0; i < k; ++i) {
+            Map.Entry e = pq.poll();
+            top.add((int) e.getKey());
+        }
+
+        return top;
+    }
+
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer>  heap = new PriorityQueue<>(Collections.reverseOrder());
+        for (int i : nums) {
+            heap.add(i);
+        }
+
+        for (int x = 0; x < k -1; x++) {
+            heap.poll();
+        }
+
+        return heap.peek();
+    }
+
+    public int kthSmallest(int[][] matrix, int k) {
+        int traveled = 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for (int[] x : matrix) {
+            for (int y : x) {
+                pq.add(y);
+            }
+        }
+
+        for (int x = 0; x < k - 1; x++) {
+            pq.poll();
+        }
+
+        return pq.peek();
+    }
+
+    public int kthSmallest(TreeNode root, int k) {
+        Queue<TreeNode> q = new LinkedList();
+        PriorityQueue<Integer> nodes = new PriorityQueue<>();
+
+        if (root != null) {
+            q.add(root);
+            while (!q.isEmpty()) {
+                TreeNode next= q.poll();
+
+                nodes.add(next.val);
+
+                if (next.left != null) {
+                    q.add(next.left);
+                }
+
+                if (next.right != null) {
+                    q.add(next.right);
+                }
+            }
+
+            for (int x = 0; x < k -1; x++) {
+                nodes.poll();
+            }
+
+            return nodes.peek();
+        } else {
+            return -1;
+        }
+    }
 }
