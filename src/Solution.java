@@ -569,4 +569,108 @@ class Solution {
             return -1;
         }
     }
+
+    public boolean wordPattern(String pattern, String str) {
+        Map<Character, String> patterns = new HashMap<>();
+        Set<String> seen = new HashSet<>();
+
+        String[] tokens = str.split(" ");
+
+        if (tokens.length != pattern.length()) {
+            return false;
+        }
+
+        for (int x = 0; x < pattern.length(); x++) {
+            if (patterns.containsKey(pattern.charAt(x))) {
+                if (!patterns.get(pattern.charAt(x)).equals(tokens[x])) {
+                    return false;
+                }
+            } else {
+                if (seen.contains(tokens[x])) {
+                    return false;
+                }
+
+                seen.add(tokens[x]);
+                patterns.put(pattern.charAt(x), tokens[x]);
+            }
+        }
+
+        return true;
+    }
+
+    public boolean containsDuplicate(int[] nums) {
+        Set<Integer> seen = new HashSet<>();
+
+        for (int i : nums) {
+            if (seen.contains(i)) {
+                return true;
+            } else {
+                seen.add(i);
+            }
+        }
+
+        return false;
+    }
+
+    public int[] productExceptSelf(int[] nums) {
+        int product = 1;
+
+        for (int num : nums) {
+            product *= num;
+        }
+
+        for (int x = 0; x < nums.length; x++) {
+            if (nums[x] != 0) {
+                nums[x] = product / nums[x];
+            } else {
+                nums[x] = 0;
+            }
+        }
+
+        return nums;
+    }
+
+    public boolean isAnagram(String s, String t) {
+        char[] c1 = s.toCharArray();
+        char[] c2 = t.toCharArray();
+        Arrays.sort(c1);
+        Arrays.sort(c2);
+
+        if (c1.length != c2.length) {
+            return false;
+        }
+
+        for (int x = 0; x < c1.length; x++) {
+            if (c1[x] != c2[x]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        Map<Integer, List<Integer>> dups = new HashMap<>();
+
+        for (int x = 0; x < nums.length; x++) {
+            int i = nums[x];
+
+            if (dups.containsKey(i)) {
+                for (int index : dups.get(i)) {
+                    if (x - index <= k) {
+                        return true;
+                    }
+                }
+
+                dups.get(i).add(x);
+            } else {
+                List<Integer> indices = new ArrayList<>();
+                indices.add(x);
+
+                dups.put(i, indices);
+            }
+        }
+
+        return false;
+    }
 }

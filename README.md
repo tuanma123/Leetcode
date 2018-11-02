@@ -24,3 +24,7 @@ problems.
 |Kth Largest Element in an Array | Medium | https://leetcode.com/problems/kth-largest-element-in-an-array/ | 
 |Kth Smallest Element in a Sorted Matrix | Medium | https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/ |
 |Kth Smallest Element in a BST | Medium | https://leetcode.com/problems/kth-smallest-element-in-a-bst/ |
+|Word Pattern | Easy | https://leetcode.com/problems/word-pattern/ |
+|Contains Duplicates | Easy | https://leetcode.com/problems/contains-duplicate/ |
+|Valid Anagram | Easy | https://leetcode.com/problems/valid-anagram/ |
+|Contains Duplicate II | Easy | https://leetcode.com/problems/contains-duplicate-ii/ |
