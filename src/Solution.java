@@ -673,4 +673,27 @@ class Solution {
 
         return false;
     }
+
+    public double myPow(double x, int n) {
+        // lul
+        return Math.pow(x, n);
+    }
+
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for(int x = 0; x < m; x++) {
+            pq.add(nums1[x]);
+        }
+
+        for(int x = 0; x < n; x++) {
+            pq.add(nums2[x]);
+        }
+
+        int count = 0;
+        while(!pq.isEmpty()) {
+            nums1[count] = pq.poll();
+            count++;
+        }
+    }
 }

@@ -28,3 +28,5 @@ problems.
 |Contains Duplicates | Easy | https://leetcode.com/problems/contains-duplicate/ |
 |Valid Anagram | Easy | https://leetcode.com/problems/valid-anagram/ |
 |Contains Duplicate II | Easy | https://leetcode.com/problems/contains-duplicate-ii/ |
+|Pow(x, n) | Medium | https://leetcode.com/problems/powx-n/ |
+|Merge Sorted Array | Easy | https://leetcode.com/problems/merge-sorted-array/ |
