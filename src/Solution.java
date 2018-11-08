@@ -696,4 +696,41 @@ class Solution {
             count++;
         }
     }
+
+    public int missingNumber(int[] nums) {
+        boolean[] found = new boolean[nums.length + 1];
+
+        for (int x = 0; x < nums.length; x++) {
+            found[nums[x]] = true;
+        }
+
+
+        for (int x = 0; x < found.length; x++) {
+            if (!found[x]) {
+                return x;
+            }
+        }
+
+
+        return 0;
+    }
+
+    public List<String> fizzBuzz(int n) {
+        List<String> result = new ArrayList<>();
+
+        for (int x = 1; x <= n; x++) {
+            if (x % 5 == 0 && x % 3 == 0) {
+                result.add("FizzBuzz");
+
+            } else if (x % 5 == 0) {
+                result.add("Buzz");
+            } else if (x % 3 == 0) {
+                result.add("Fizz");
+            } else {
+                result.add("" + x);
+            }
+        }
+
+        return result;
+    }
 }

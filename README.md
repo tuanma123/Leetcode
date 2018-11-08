@@ -30,3 +30,5 @@ problems.
 |Contains Duplicate II | Easy | https://leetcode.com/problems/contains-duplicate-ii/ |
 |Pow(x, n) | Medium | https://leetcode.com/problems/powx-n/ |
 |Merge Sorted Array | Easy | https://leetcode.com/problems/merge-sorted-array/ |
+|Missing Number | Easy | https://leetcode.com/problems/missing-number/ |
+|Fizz Buzz | Easy | https://leetcode.com/problems/fizz-buzz/ |
