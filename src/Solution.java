@@ -733,4 +733,148 @@ class Solution {
 
         return result;
     }
+
+    public int bulbSwitch(int n) {
+        return (int) Math.sqrt(n);
+    }
+
+    public boolean isSubsequence(String s, String t) {
+        if (s.length() == 0) {
+            return true;
+        }
+
+        int count = 0;
+
+        for (char c : t.toCharArray()) {
+            if (c == s.charAt(count)) {
+                count++;
+            }
+
+            if (count == s.length()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public String frequencySort(String s) {
+        Map<Character, Integer> charMapping = new HashMap<>();
+        for (Character c : s.toCharArray()) {
+            if (charMapping.containsKey(c)) {
+                charMapping.put(c, charMapping.get(c) + 1);
+            } else {
+                charMapping.put(c, 1);
+            }
+        }
+
+        PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+        for (Map.Entry<Character, Integer> entry : charMapping.entrySet()) {
+            pq.add(entry);
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        while (!pq.isEmpty()) {
+            Map.Entry<Character, Integer> next = pq.poll();
+
+            for (int x = 0; x < next.getValue(); x++) {
+                result.append(next.getKey());
+            }
+        }
+
+        return result.toString();
+    }
+
+    public int maxAreaOfIsland(int[][] grid) {
+        int maxSize = 0;
+        boolean[][] seen = new boolean[grid.length][];
+        for (int x = 0; x < grid.length; x++) {
+            seen[x] = new boolean[grid[x].length];
+        }
+
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[y].length; x++) {
+                if (grid[y][x] == 1) {
+                    List<Integer> coord = new ArrayList<>();
+                    coord.add(x);
+                    coord.add(y);
+                    int size = dfs(grid, coord, seen);
+
+                    if (size > maxSize) {
+                        maxSize = size;
+                    }
+                }
+            }
+        }
+
+        return maxSize;
+    }
+
+    public int dfs (int[][] grid, List<Integer> coord, boolean[][] seen) {
+        Stack<List<Integer>> coords = new Stack<>();
+        coords.add(coord);
+        int size = 0;
+        seen[coord.get(1)][coord.get(0)] = true;
+
+        while (!coords.isEmpty()) {
+            List<Integer> pair = coords.pop();
+            grid[pair.get(1)][pair.get(0)] = 0;
+            size++;
+
+            List<List<Integer>> neighbors = getNeighbors(grid, pair.get(0), pair.get(1));
+
+            for (List<Integer> neighbor : neighbors) {
+                if (!seen[neighbor.get(1)][neighbor.get(0)]) {
+                    coords.add(neighbor);
+                    seen[neighbor.get(1)][neighbor.get(0)] = true;
+                }
+            }
+        }
+
+        return size;
+    }
+
+    public List<List<Integer>> getNeighbors(int[][] grid, int x, int y) {
+        List<List<Integer>> neighbors = new ArrayList<>();
+
+        if (x + 1 < grid[y].length) {
+            if (grid[y][x + 1] == 1) {
+                List<Integer> neighbor = new ArrayList<>();
+                neighbor.add(x + 1);
+                neighbor.add(y);
+
+                neighbors.add(neighbor);
+            }
+        }
+        if (x - 1 >= 0) {
+            if (grid[y][x - 1] == 1) {
+                List<Integer> neighbor = new ArrayList<>();
+                neighbor.add(x - 1);
+                neighbor.add(y);
+
+                neighbors.add(neighbor);
+            }
+        }
+        if (y + 1 < grid.length) {
+            if (grid[y + 1][x] == 1) {
+                List<Integer> neighbor = new ArrayList<>();
+                neighbor.add(x);
+                neighbor.add(y + 1);
+
+                neighbors.add(neighbor);
+            }
+        }
+        if (y - 1 >= 0) {
+            if (grid[y - 1][x] == 1) {
+                List<Integer> neighbor = new ArrayList<>();
+                neighbor.add(x);
+                neighbor.add(y - 1);
+
+                neighbors.add(neighbor);
+            }
+        }
+
+        return neighbors;
+    }
 }
