@@ -877,4 +877,50 @@ class Solution {
 
         return neighbors;
     }
+
+    public int reverse(int x) {
+        boolean negative = false;
+        if (x < 0) {
+            negative = true;
+            x *= -1;
+        }
+
+        int digits = (int) (Math.log10(x) + 1);
+        int power = digits;
+        int result = 0;
+
+        for (int y = 0; y < digits; y++) {
+            result += Math.pow(10, power) * nthDigit(x, y);
+            power--;
+        }
+
+        if (negative) {
+            result *= -1;
+        }
+
+        return result;
+    }
+
+    public int nthDigit (int x, int n) {
+        return (int)(x /(Math.pow(10, n))) % 10;
+    }
+
+    public boolean judgeCircle(String moves) {
+        int x = 0;
+        int y = 0;
+
+        for (char move : moves.toCharArray()) {
+            if (move == 'U') {
+                y++;
+            } else if (move == 'D') {
+                y--;
+            } else if (move == 'R') {
+                x++;
+            } else if (move == 'L') {
+                x--;
+            }
+        }
+
+        return x == 0 & y == 0;
+    }
 }

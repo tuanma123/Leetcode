@@ -36,3 +36,5 @@ problems.
 | Is Subsequence | Medium | https://leetcode.com/problems/is-subsequence/ |
 | Sort Characters By Frequency | Medium | https://leetcode.com/problems/sort-characters-by-frequency/ |
 | Max Area of Island | Medium | https://leetcode.com/problems/number-of-islands/ |
+| Binary Search Tree Iterator | Medium | https://leetcode.com/problems/binary-search-tree-iterator/ |
+| Robot Return to Origin | Easy | https://leetcode.com/problems/robot-return-to-origin/ |
