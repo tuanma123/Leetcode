@@ -39,3 +39,5 @@ problems.
 | Binary Search Tree Iterator | Medium | https://leetcode.com/problems/binary-search-tree-iterator/ |
 | Robot Return to Origin | Easy | https://leetcode.com/problems/robot-return-to-origin/ |
 | Symmetric Tree | Easy | https://leetcode.com/problems/symmetric-tree/ |
+| Find Median Sorted Arrays | Hard | https://leetcode.com/problems/median-of-two-sorted-arrays |
+| Reverse Words in a String | Medium | https://leetcode.com/problems/reverse-words-in-a-string/ |

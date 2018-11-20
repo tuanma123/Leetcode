@@ -1,3 +1,5 @@
+import javafx.scene.layout.Priority;
+
 import java.util.*;
 
 class Solution {
@@ -80,30 +82,22 @@ class Solution {
      * @return
      */
     public String reverseWords(String s) {
-        int start = 0;
-        if (s.startsWith(" ")) {
+        s = s.trim().replaceAll(" +", " ");
 
-            for (int y = 0; y < s.length(); y++) {
-                if (s.charAt(y) != ' ') {
-                    break;
-                }
-                start++;
-            }
-        }
-        s = s.substring(start, s.length());
-
+        StringBuilder reversed = new StringBuilder();
         String[] tokens = s.split(" ");
-        StringBuilder sentence = new StringBuilder();
 
         for (int x = tokens.length - 1; x >= 0; x--) {
-            if (x == 0) {
-                sentence.append(tokens[x]);
-            } else {
-                sentence.append(" " + tokens[x]);
+            if (!tokens[x].equals(" ")) {
+                reversed.append(tokens[x]);
+
+                if (x != 0) {
+                    reversed.append(" ");
+                }
             }
         }
 
-        return sentence.toString();
+        return reversed.toString();
     }
 
     /**
@@ -949,5 +943,61 @@ class Solution {
             q.add(t2.left);
         }
         return true;
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+
+        for (int i : nums1) {
+            heap.add(i);
+        }
+
+        for (int i : nums2) {
+            heap.add(i);
+        }
+
+        int length = nums1.length + nums2.length;
+        if (length % 2 == 0) {
+            for (int x = 0; x < (length / 2) - 1; x++) {
+                heap.poll();
+            }
+
+            double sum = heap.poll();
+            sum += heap.poll();
+            return sum / 2;
+        } else {
+            for (int x = 0; x < length / 2; x++) {
+                heap.poll();
+            }
+
+            return heap.peek() * 1.0;
+        }
+    }
+
+    public String largestNumber(int[] nums) {
+        class LargerNumberComparator implements Comparator<String> {
+            @Override
+            public int compare(String a, String b) {
+                String order1 = a + b;
+                String order2 = b + a;
+                return order2.compareTo(order1);
+            }
+        }
+
+        String[] numsString = new String[nums.length];
+
+        for (int x = 0; x < numsString.length; x++) {
+            numsString[x] = nums[x] + "";
+        }
+
+        Arrays.sort(numsString, new LargerNumberComparator());
+
+        StringBuilder toString = new StringBuilder();
+
+        for (String num : numsString) {
+            toString.append(num);
+        }
+
+        return toString.toString();
     }
 }
