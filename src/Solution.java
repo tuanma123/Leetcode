@@ -995,7 +995,14 @@ class Solution {
         StringBuilder toString = new StringBuilder();
 
         for (String num : numsString) {
-            toString.append(num);
+            if (toString.toString().equals("")) {
+                toString.append(num);
+
+            } else {
+                if (!(num.equals("0") && Integer.parseInt(toString.toString()) == 0)) {
+                    toString.append(num);
+                }
+            }
         }
 
         return toString.toString();
