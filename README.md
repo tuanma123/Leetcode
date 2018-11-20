@@ -38,3 +38,4 @@ problems.
 | Max Area of Island | Medium | https://leetcode.com/problems/number-of-islands/ |
 | Binary Search Tree Iterator | Medium | https://leetcode.com/problems/binary-search-tree-iterator/ |
 | Robot Return to Origin | Easy | https://leetcode.com/problems/robot-return-to-origin/ |
+| Symmetric Tree | Easy | https://leetcode.com/problems/symmetric-tree/ |
