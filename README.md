@@ -41,3 +41,7 @@ problems.
 | Symmetric Tree | Easy | https://leetcode.com/problems/symmetric-tree/ |
 | Find Median Sorted Arrays | Hard | https://leetcode.com/problems/median-of-two-sorted-arrays |
 | Reverse Words in a String | Medium | https://leetcode.com/problems/reverse-words-in-a-string/ |
+| Length of Last Word | Easy | https://leetcode.com/problems/length-of-last-word/ |
+| Binary Tree Postorder Traversal | Hard | https://leetcode.com/problems/binary-tree-postorder-traversal/ |
+| Binary Tree Inorder Traversal | Medium | https://leetcode.com/problems/binary-tree-inorder-traversal/ |
+| Binary Tree Preorder Traversal | Medium | https://leetcode.com/problems/binary-tree-preorder-traversal/ |

@@ -1007,4 +1007,72 @@ class Solution {
 
         return toString.toString();
     }
+
+    public int lengthOfLastWord(String s) {
+        String[] tokens = s.split(" ");
+
+        return tokens.length > 0 ? tokens[tokens.length - 1].length() : 0;
+    }
+
+    public List < Integer > inorderTraversal(TreeNode root) {
+        List < Integer > res = new ArrayList < > ();
+        inorderHelper(root, res);
+        return res;
+    }
+
+    public void inorderHelper(TreeNode node, List < Integer > res) {
+        if (node != null) {
+            if (node.left != null) {
+                inorderHelper(node.left, res);
+            }
+            res.add(node.val);
+            if (node.right != null) {
+                inorderHelper(node.right, res);
+            }
+        }
+    }
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+
+        postOrderTraversalHelper(root, res);
+
+        return res;
+    }
+
+    public void postOrderTraversalHelper(TreeNode node, List<Integer> res) {
+        if (node != null) {
+            if (node.left != null) {
+                postOrderTraversalHelper(node.left, res);
+            }
+
+            if (node.right != null) {
+                postOrderTraversalHelper(node.right, res);
+            }
+
+            res.add(node.val);
+        }
+    }
+
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+
+        preOrderTraversalHelper(root, res);
+
+        return res;
+    }
+
+    public void preOrderTraversalHelper(TreeNode node, List<Integer> res) {
+        if (node != null) {
+            res.add(node.val);
+
+            if (node.left != null) {
+                preOrderTraversalHelper(node.left, res);
+            }
+
+            if (node.right != null) {
+                preOrderTraversalHelper(node.right, res);
+            }
+        }
+    }
 }
